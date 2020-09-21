@@ -8,7 +8,7 @@ server:
 spring:
   rabbitmq:
     host: 192.168.52.128
-    port: 35673
+    port: 35672
     username: ttx
     password: ttx2011
     virtualHost: /cloud-dev

@@ -1,5 +1,6 @@
 package com.example.demoa.mq;
 
+import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.SubscribableChannel;
@@ -9,10 +10,12 @@ import org.springframework.messaging.SubscribableChannel;
  */
 public interface ISendService {
 
+    String DPB_EXCHANGE_OUTPUT = "dpb-exchange-output";
+
     /**
      * 指定输出的交换器名称
      */
-    @Output("dpb-exchange")
+    @Output(ISendService.DPB_EXCHANGE_OUTPUT)
     SubscribableChannel send();
 }
 

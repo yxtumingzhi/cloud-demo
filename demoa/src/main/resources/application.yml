@@ -1,4 +1,33 @@
 server:
   port: 9001
+
+spring:
   application:
     name: demoa
+  cloud:
+    stream:
+      binders:
+        mztuRabbitBinder:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: 192.168.52.128
+                port: 35672
+                username: ttx
+                password: ttx2011
+                virtualHost: /cloud-dev
+      bindings:
+        dpb-exchange-input1:
+          destination: miniExchange
+          binders: mztuRabbitBinder
+#          content-type: application/json
+#          consumer:
+#            partitioned: true
+#          group: miniExchange-group1
+#        dpb-exchange-input2:
+#          destination: miniExchange
+#          binders: mztuRabbitBinder
+        dpb-exchange-output:
+          destination: miniExchange2
+          binders: mztuRabbitBinder
