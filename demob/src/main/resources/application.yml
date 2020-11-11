@@ -1,11 +1,17 @@
 
 server:
   port: 9002
-  application:
-    name: demob
+
 
 
 spring:
+  application:
+    name: demob
+  cloud:
+    nacos:
+      discovery:
+        # 指定nacos server地址
+        server-addr: 192.168.52.128:8848
   rabbitmq:
     host: 192.168.52.128
     port: 35672

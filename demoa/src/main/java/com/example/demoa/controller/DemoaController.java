@@ -1,8 +1,11 @@
 package com.example.demoa.controller;
 
+import cn.hutool.core.io.file.FileWriter;
+import cn.hutool.core.io.file.FileReader;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,19 +19,13 @@ public class DemoaController {
 
     @PostMapping("/test")
     public String test()  {
+        try {
+            FileWriter writer = new FileWriter("test.txt");
+            writer.write("testwerwe");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-        //int a = 5/0;
-        int a= 1;String b = "aaa";Boolean ddd = true;
-        dee(a,b,ddd);
-        System.out.println(a);
-        System.out.println(b);
-        System.out.println(ddd);
-        List<Object> list = new ArrayList<>();
-        list.add("true");
-        list.add("asdf");
-        boolean ddssd = (boolean) list.get(0);
-        System.out.println(list);
-        System.out.println(list.size());
         return "test:result";
     }
 

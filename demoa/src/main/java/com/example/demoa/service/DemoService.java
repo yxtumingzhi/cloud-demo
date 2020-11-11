@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
  * @Date 2020/9/11 16:07
  **/
 @Service
-public class DemoService {
+public class DemoService implements IDemoService{
 
-
+    private String test(){
+        return "tet";
+    }
 
 }

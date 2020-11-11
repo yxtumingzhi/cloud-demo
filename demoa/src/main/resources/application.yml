@@ -1,10 +1,14 @@
 server:
-  port: 9001
+  port: 20101
 
 spring:
   application:
     name: demoa
   cloud:
+    nacos:
+      discovery:
+        # 指定nacos server地址
+        server-addr: 192.168.52.128:8848
     stream:
       binders:
         mztuRabbitBinder:
@@ -25,9 +29,21 @@ spring:
 #          consumer:
 #            partitioned: true
 #          group: miniExchange-group1
-#        dpb-exchange-input2:
-#          destination: miniExchange
-#          binders: mztuRabbitBinder
-        dpb-exchange-output:
-          destination: miniExchange2
+        dpb-exchange-input2:
+          destination: miniExchange
           binders: mztuRabbitBinder
+        dpb-exchange-output:
+          destination: miniExchange
+          binders: mztuRabbitBinder
+
+      rabbit:
+        bindings:
+          dpb-exchange-output:
+            producer:
+              routingKeyExpression: '''afterTestEvent'''
+          dpb-exchange-input1:
+            consumer:
+              bindingRoutingKey: afterTestEvent
+          dpb-exchange-input2:
+            consumer:
+              bindingRoutingKey: afterTestEvent
